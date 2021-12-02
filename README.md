@@ -5,12 +5,14 @@ Solutions written in [Raku](https://www.raku.org/). Whitespace added for clarity
 Input data copied to clipboard and piped from `pbpaste` to `raku` using the
 following command around each solution:
 ```bash
-pbpaste | raku -e 'say …'
+pbpaste | raku -e '…'
 ```
 
 - [2019](2019.md)
 - [2020](2020.md)
 - [2021](2021.md)
+
+---
 
 © 2021 Nova Patch
 
