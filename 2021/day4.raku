@@ -1,4 +1,5 @@
 # Day 4: Giant Squid
+# https://adventofcode.com/2021/day/4
 
 my @n = lines[0].split(',');
 my @b = slurp.trim.split("\n\n").map: *.split("\n").map: *.comb(/\d+/).Array;

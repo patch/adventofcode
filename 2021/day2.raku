@@ -1,4 +1,5 @@
 # Day 2: Dive!
+# https://adventofcode.com/2021/day/2
 
 my @in = lines;
 
@@ -12,9 +13,9 @@ my ($h, $d);
 for @in.words -> $k, $v {
   state $a = 0;
   given $k {
-    when ‘down’    { $a += $v }
-    when ‘up’      { $a -= $v }
-    when ‘forward’ { $h += $v; $d += $a * $v }
+    when 'down'    { $a += $v }
+    when 'up'      { $a -= $v }
+    when 'forward' { $h += $v; $d += $a * $v }
   }
 }
 say $h * $d;
