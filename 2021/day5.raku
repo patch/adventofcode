@@ -1,5 +1,5 @@
 # Day 5: Hydrothermal Venture
-# https://adventofcode.com/2021/day/5
+# adventofcode.com/2021/day/5
 
 my @in = lines».split(' -> ')».split(',')».Int;
 
