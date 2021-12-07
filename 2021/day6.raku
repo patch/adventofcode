@@ -1,18 +1,18 @@
 # Day 6: Lanternfish
 # adventofcode.com/2021/day/6
 
-my $fish = BagHash.new: lines.first.split(',');
+my BagHash $fish.=new: lines.first.split(',');
 for 1..256 {
-    my $tmp = BagHash.new;
-    for $fish.kv -> $k, $v {
-        if $k {
-            $tmp{$k - 1} += $v;
+    my BagHash $tmp.=new;
+    for @$fish {
+        if .key {
+            $tmp{.key - 1} += .value;
         }
         else {
-            $tmp{6} += $v;
-            $tmp{8}  = $v;
+            $tmp{6} += .value;
+            $tmp{8}  = .value;
         }
     }
     $fish = $tmp;
-    say $fish.values.sum when any(80, 256);
+    say $fish.values.sum when any 80, 256;
 }
