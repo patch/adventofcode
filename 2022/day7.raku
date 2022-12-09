@@ -3,7 +3,7 @@
 
 my %fs;
 
-for slurp.comb: / <?after '$ '> .+? <?before [ \n\$ | $ ]> / {
+for slurp.comb: / <?after \$ \s > .+? <?before [ \n \$ | $ ] > / {
     state @dir = '/';
 
     when /^ cd \s (.+) $/ {
@@ -15,8 +15,8 @@ for slurp.comb: / <?after '$ '> .+? <?before [ \n\$ | $ ]> / {
         }
     }
     when /^ ls \n (.+) / {
-        for $0.comb(/\d+/) X ^@dir -> ($size, $i) {
-            %fs{ @dir[0..$i].join('/') } += $size;
+        for $0.comb(/\d+/) X @dir.produce(* ~ '/' ~ *) -> ($size, $dir) {
+            %fs{$dir} += $size;
         }
     }
 }
@@ -25,4 +25,4 @@ for slurp.comb: / <?after '$ '> .+? <?before [ \n\$ | $ ]> / {
 say %fs.values.grep(* ≤ 100000).sum;
 
 # Part 2
-say %fs.values.sort.first: * ≥ %fs</> - 40000000;
+say %fs.values.sort.first(* ≥ %fs</> - 40000000);
